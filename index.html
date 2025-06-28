@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Electron Link</title>
+
+  </script>
+
+  <!-- ✅ Load styles after theme class is applied -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <!-- Title Bar -->
+  <div class="titlebar">
+    <div class="titlebar-title">Xray Desktop Client</div>
+    <div class="window-controls">
+      <div class="window-control-button">—</div>
+      <div class="window-control-button">□</div>
+      <div class="window-control-button close">×</div>
+    </div>
+  </div>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="sidebar-item active">
+      <span>🔒</span>
+      <span>Connection</span>
+    </div>
+    <div class="sidebar-item">
+      <span>📊</span>
+      <span>Statistics</span>
+    </div>
+    <div class="sidebar-item">
+      <span>⚙️</span>
+      <span>Settings</span>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+
+    <!-- Connection Page -->
+    <div id="page-connection" class="page-section">
+      <div class="connection-container">
+        <div class="status-circle">
+          <div class="connection-timer">00:00:00</div>
+          <button id="connection-toggle" class="connection-button">
+            <span class="connection-icon">⚡</span>
+            <span class="connection-text">Connect</span>
+          </button>
+        </div>
+
+        <div class="connection-info">
+          <div class="info-card">
+            <div class="info-label">Status</div>
+            <div class="info-value status-value">Not Connected</div>
+          </div>
+          <div class="info-card">
+            <div class="info-label">Location</div>
+            <div class="info-value location-value">Auto Select</div>
+          </div>
+          <div class="info-card">
+            <div class="info-label">IP Address</div>
+            <div class="info-value ip-value">--.--.--.--</div>
+          </div>
+        </div>
+
+        <div class="url-config-section">
+          <div class="url-input-wrapper">
+            <input type="text" id="url-input" placeholder="Enter configuration URL" />
+            <button id="submit-btn">Import Config</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Statistics Page -->
+    <div id="page-statistics" class="page-section" style="display: none;">
+      <h2 class="margin-bottom-lg">Statistics</h2>
+      <div class="stat-card">
+        <div class="stat-label">Upload:</div>
+        <div class="stat-value" id="upload-data">0 KB</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Download:</div>
+        <div class="stat-value" id="download-data">0 KB</div>
+      </div>
+    </div>
+
+    <!-- Settings Page -->
+    <div id="page-settings" class="page-section" style="display: none;">
+
+      <!-- Theme -->
+      <div class="settings-card">
+        <label for="theme-select">
+          <span>🌓 Theme</span>
+        </label>
+        <select id="theme-select">
+          <option value="auto">Auto</option>
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+        </select>
+      </div>
+
+      <!-- Language Selection -->
+      <div class="settings-card">
+        <label for="language-select">
+          <span>🌐 Language</span>
+        </label>
+        <select id="language-select">
+          <option value="en">English</option>
+          <option value="zh">中文</option>
+        </select>
+      </div>
+
+      <!-- Check for Updates -->
+      <div class="settings-card">
+        <div>
+          <span>🔄 Check for Updates</span>
+          <p class="small-text">Open latest release page</p>
+        </div>
+        <button id="check-update-btn">Check</button>
+      </div>
+
+      <!-- Clear Cache -->
+      <div class="settings-card">
+        <div>
+          <span>🧹 Clear Cache</span>
+          <p class="small-text">Remove saved settings and reload</p>
+        </div>
+        <button id="clear-cache-btn">Clear</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="renderer.js">
+
+  </script>
+</body>
+
+</html>
