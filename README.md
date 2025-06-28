@@ -4,6 +4,6 @@ visit xray-core website https://github.com/XTLS/Xray-core, find release and down
 unzip it. Take geoip.dat, geosite.dat and xray.exe put in into xray_electron folder.
 
 other neccessary thing include:
-1. npm install (this is use to install electron environment)
+1. npm install (this is use to install electron environment node.modules file will be downloaded)
 2. npm start (to start electron environment)
 
