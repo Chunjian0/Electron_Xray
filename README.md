@@ -1,6 +1,6 @@
 personal build mini project with open source resource (xray-core, koyeb and electron), a frontend desktop vpn application 
 
-visit xray-core website https://github.com/XTLS/Xray-core, find release and download xray-windows-32 zip file
+visit xray-core website https://github.com/XTLS/Xray-core, find release and download xray-windows-64 zip file
 unzip it. Take geoip.dat, geosite.dat and xray.exe put in into xray_electron folder.
 
 other neccessary thing include:
