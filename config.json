@@ -33,7 +33,7 @@
               {
                 "id": "540bb877-7021-47fe-be10-88bbb3cad536",
                 "encryption": "none",
-                "flow": "xtls-rprx-vision"
+                "flow": ""
               }
             ]
           }

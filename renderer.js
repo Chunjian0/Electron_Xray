@@ -5,6 +5,7 @@ let connectionTimer = null;
 let totalSeconds = 0;
 let isConnected = false;
 let checkingIP = false;
+let currentLang = localStorage.getItem('language') || 'en';
 
 // Sidebar tab switching
 const sidebarItems = document.querySelectorAll('.sidebar-item');
@@ -21,6 +22,129 @@ sidebarItems.forEach((item, index) => {
     Object.values(pages).forEach(page => page.style.display = 'none');
     pages[index].style.display = 'block';
   });
+});
+
+// ------------------- Language Translations -------------------
+const translations = {
+  en: {
+    titlebar: "Xray Desktop Client",
+    home: "Connection",
+    statistics: "Statistics",
+    settings: "Settings",
+    connect: "Connect",
+    disconnect: "Disconnect",
+    connecting: "Connecting...",
+    status: "Status",
+    location: "Location",
+    ipAddress: "IP Address",
+    autoSelect: "Auto Select",
+    fetching: "Fetching...",
+    notConnected: "Disconnected",
+    enterUrl: "Enter subscription URL",
+    importConfig: "Import",
+    upload: "Upload",
+    download: "Download",
+    themeEmoji: "Theme",
+    languageEmoji: "Language",
+    themeAuto: "Auto",
+    themeLight: "Light",
+    themeDark: "Dark",
+    checkEmoji: "Check for Updates",
+    updatesNote: "Open latest release page",
+    clearEmoji: "Clear Cache",
+    cacheNote: "Remove saved settings and reload",
+    buttonCheck: "Check",
+    buttonClear: "Clear"
+  },
+  zh: {
+    titlebar: "Xray 桌面客户端",
+    home: "连接",
+    statistics: "流量统计",
+    settings: "设置",
+    connect: "连接",
+    disconnect: "断开连接",
+    connecting: "正在连接...",
+    status: "状态",
+    location: "位置",
+    ipAddress: "IP 地址",
+    autoSelect: "自动选择",
+    fetching: "获取中...",
+    notConnected: "未连接",
+    enterUrl: "请输入订阅链接",
+    importConfig: "导入",
+    upload: "上传",
+    download: "下载",
+    themeEmoji: "主题",
+    languageEmoji: "语言",
+    themeAuto: "自动",
+    themeLight: "浅色",
+    themeDark: "深色",
+    checkEmoji: "检查更新",
+    updatesNote: "打开最新版本页面",
+    clearEmoji: "清除缓存",
+    cacheNote: "移除设置并重新加载",
+    buttonCheck: "检查",
+    buttonClear: "清除"
+  }
+};
+
+// ------------------- Apply Translations -------------------
+function applyTranslations() {
+  const t = translations[currentLang];
+
+  document.querySelector(".titlebar-title").innerText = t.titlebar;
+
+  const sidebarItems = document.querySelectorAll(".sidebar-item");
+  sidebarItems[0].querySelector(".sidebar-text").innerText = t.home;
+  sidebarItems[1].querySelector(".sidebar-text").innerText = t.statistics;
+  sidebarItems[2].querySelector(".sidebar-text").innerText = t.settings;
+
+  document.querySelector(".connection-text").innerText = isConnected ? t.disconnect : t.connect;
+  document.querySelector(".status-value").innerText = isConnected ? t.connect : t.notConnected;
+  document.querySelector(".location-value").innerText = t.autoSelect;
+  document.querySelector(".info-card:nth-child(1) .info-label").innerText = t.status;
+  document.querySelector(".info-card:nth-child(2) .info-label").innerText = t.location;
+  document.querySelector(".info-card:nth-child(3) .info-label").innerText = t.ipAddress;
+  document.querySelector("#url-input").placeholder = t.enterUrl;
+  document.querySelector("#submit-btn").innerText = t.importConfig;
+
+  document.querySelector("#page-statistics h2").innerText = t.statistics;
+  document.querySelector("#upload-data").previousElementSibling.innerText = t.upload;
+  document.querySelector("#download-data").previousElementSibling.innerText = t.download;
+
+  document.querySelector('label[for="theme-select"] span').innerText = t.themeEmoji;
+  document.querySelector('label[for="language-select"] span').innerText = t.languageEmoji;
+
+  const themeSelect = document.getElementById("theme-select");
+  themeSelect.options[0].text = t.themeAuto;
+  themeSelect.options[1].text = t.themeLight;
+  themeSelect.options[2].text = t.themeDark;
+
+  // Updates & Cache
+  document.querySelector("#check-update-btn").previousElementSibling.children[0].innerText = t.checkEmoji;
+  document.querySelector("#check-update-btn").previousElementSibling.children[1].innerText = t.updatesNote;
+  document.querySelector("#check-update-btn").innerText = t.buttonCheck;
+
+  document.querySelector("#clear-cache-btn").previousElementSibling.children[0].innerText = t.clearEmoji;
+  document.querySelector("#clear-cache-btn").previousElementSibling.children[1].innerText = t.cacheNote;
+  document.querySelector("#clear-cache-btn").innerText = t.buttonClear;
+}
+
+// ------------------- Load Initialization -------------------
+document.addEventListener('DOMContentLoaded', () => {
+  const languageSelect = document.getElementById('language-select');
+
+  if (languageSelect) {
+    languageSelect.value = currentLang;
+    applyTranslations(); // Apply on page load
+
+    languageSelect.addEventListener('change', () => {
+      currentLang = languageSelect.value;
+      localStorage.setItem('language', currentLang);
+      applyTranslations();
+      showNotification('Info', `Language set to: ${currentLang}`, 'info');
+    });
+  }
 });
 
 // Apply theme from select
@@ -92,10 +216,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const savedLang = localStorage.getItem('language') || 'en';
     languageSelect.value = savedLang;
 
+    let lastLang = currentLang;
+
     languageSelect.addEventListener('change', () => {
-      const selectedLang = languageSelect.value;
-      localStorage.setItem('language', selectedLang);
-      showNotification('Info', `Language set to: ${selectedLang}`, 'info');
+      const selected = languageSelect.value;
+      if (selected !== lastLang) {
+        currentLang = selected;
+        lastLang = selected;
+        localStorage.setItem('language', currentLang);
+        applyTranslations();
+        showNotification('Info', `Language set to: ${currentLang}`, 'info');
+      }
     });
   }
 
@@ -111,7 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => location.reload(), 1000);
   });
 
-// IP display
+  // IP display
   updateIPDisplay('--.--.--.--');
   ipcRenderer.send('request-ip');
 
