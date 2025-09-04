@@ -7,7 +7,17 @@ other neccessary thing include:
 1. npm install (this is use to install electron environment, node.modules file will be downloaded)
 2. npm start (to start electron environment)
 
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/8f696008-c1b1-41ca-a0e2-c5a8993f66d6" alt="Light Mode" width="48%" />
-  &nbsp;&nbsp;&nbsp;&nbsp; <img src="https://github.com/user-attachments/assets/6e10470e-f74c-4b3d-89ad-5e1cf798ad52" alt="Dark Mode" width="48%" />
-</p>
+<div align="center">
+  <table>
+    <tr>
+      <td>
+        <h4>Light Mode</h4>
+        <img src="https://github.com/user-attachments/assets/8f696008-c1b1-41ca-a0e2-c5a8993f66d6" alt="Light Mode Screenshot" width="450">
+      </td>
+      <td>
+        <h4>Dark Mode</h4>
+        <img src="https://github.com/user-attachments/assets/6e10470e-f74c-4b3d-89ad-5e1cf798ad52" alt="Dark Mode Screenshot" width="450">
+      </td>
+    </tr>
+  </table>
+</div>
