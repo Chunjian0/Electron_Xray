@@ -3,7 +3,7 @@
     <tr>
       <td>
         <h4>Light Mode</h4>
-        <img src="[https://github.com/user-attachments/assets/8f696008-c1b1-41ca-a0e2-c5a8993f66d6](https://github.com/user-attachments/assets/e620ca55-edd7-4ee6-940f-f4ad668b6477)" alt="Light Mode" width="450">
+      <img src="https://github.com/user-attachments/assets/38bbe1a2-259f-4aaa-8298-0bc581e184d8" alt="Light Mode" width="450">
       </td>
       <td>
         <h4>Dark Mode</h4>
