@@ -13,8 +13,9 @@
   </table>
   <br>
   <h4>Settings Page</h4>
-  <img src="https://github.com/user-attachments/assets/39718410-5f28-425b-bf2f-e6ff9d352b9e" alt="Settings Page" width="700">
+<img src="https://github.com/user-attachments/assets/4951fc99-058f-46af-858b-991bc3510f4d" alt="Settings Page" width="700">
 </div>
+
 
 personal build mini project with open source resource (xray-core, koyeb and electron), a frontend desktop vpn application 
 
