@@ -7,7 +7,7 @@
       </td>
       <td>
         <h4>Dark Mode</h4>
-        <img src="https://github.com/user-attachments/assets/6e10470e-f74c-4b3d-89ad-5e1cf798ad52" alt="Dark Mode" width="450">
+        <img src="https://github.com/user-attachments/assets/64558422-32ad-4ad3-ac9e-7ed5563b68cf" alt="Dark Mode" width="450">
       </td>
     </tr>
   </table>
