@@ -9,16 +9,19 @@ let xrayProcess = null;
 let isConnected = false;
 
 function createWindow() {
-  mainWindow = new BrowserWindow({
-    preload: path.join(__dirname, 'preload.js'),
-    width: 800,
-    height: 600,
+  const win = new BrowserWindow({
+    width: 1200,
+    height: 800,
     webPreferences: {
-      nodeIntegration: true,
-      contextIsolation: false,
-    },
+      preload: path.join(__dirname, 'preload.js'),
+      nodeIntegration: false,     
+      contextIsolation: true,     
+      sandbox: true,               
+      enableRemoteModule: false,
+      worldSafeExecuteJavaScript: true
+    }
   });
-
+  
   mainWindow.loadFile('index.html');
 
   mainWindow.on('closed', () => {
